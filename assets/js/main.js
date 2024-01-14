@@ -50,14 +50,6 @@
         })
     );
 
-    // ===== Sub-menu
-    const submenuItems = document.querySelectorAll('.submenu-item');
-    submenuItems.forEach((el) => {
-        el.querySelector('a').addEventListener('click', () => {
-            el.querySelector('.submenu').classList.toggle('hidden');
-        });
-    });
-
     // ===== Faq accordion
     const faqs = document.querySelectorAll('.single-faq');
     faqs.forEach((el) => {

@@ -761,6 +761,11 @@ body {
   margin-bottom: 6px;
 }
 
+.my-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .-ml-1{
   margin-left: -0.25rem;
 }
