@@ -5,26 +5,13 @@
     window.onscroll = function () {
         const ud_header = document.querySelector('.ud-header');
         const sticky = ud_header.offsetTop;
-        const logo = document.querySelectorAll('.header-logo');
 
-        if (window.pageYOffset > sticky) {
-            ud_header.classList.add('sticky');
-        } else {
-            ud_header.classList.remove('sticky');
-        }
-
-        if (logo.length) {
-            document.querySelector('.header-logo').src = ud_header.classList.contains('sticky')
-                ? 'assets/images/logo/logo.svg'
-                : 'assets/images/logo/logo-white.svg';
-        }
-
-        if (
-            document.documentElement.classList.contains('dark') &&
-            logo.length &&
-            ud_header.classList.contains('sticky')
-        ) {
-            document.querySelector('.header-logo').src = 'assets/images/logo/logo-white.svg';
+        if (window.innerWidth > 960) {
+            if (window.pageYOffset > sticky) {
+                ud_header.classList.add('sticky');
+            } else {
+                ud_header.classList.remove('sticky');
+            }
         }
 
         // show or hide the back-top-top button
@@ -121,19 +108,6 @@
 
     /* ========  themeSwitcher End ========= */
 
-    // ==== for menu scroll
-    const pageLink = document.querySelectorAll('.ud-menu-scroll');
-
-    pageLink.forEach((elem) => {
-        elem.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector(elem.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth',
-                offsetTop: 1 - 60,
-            });
-        });
-    });
-
     // section menu active
     function onScroll(event) {
         const sections = document.querySelectorAll('.ud-menu-scroll');
@@ -156,5 +130,19 @@
         }
     }
 
-    window.document.addEventListener('scroll', onScroll);
+    // ==== for menu scroll
+    if (document.location.pathname == '/index.html') {
+        const pageLink = document.querySelectorAll('.ud-menu-scroll');
+
+        pageLink.forEach((elem) => {
+            elem.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector(elem.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    offsetTop: 1 - 60,
+                });
+            });
+        });
+        window.document.addEventListener('scroll', onScroll);
+    }
 })();
